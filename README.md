@@ -1,2 +1,2 @@
-# MERN_project1
+# mern_project1
 Simple mern project 
