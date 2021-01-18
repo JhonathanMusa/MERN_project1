@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "./GetInfo.css";
 
 class GetInfo extends Component {
   constructor(props) {
@@ -24,11 +25,11 @@ class GetInfo extends Component {
   render() {
     return (
       <div>
-        <table border="1">
+        <table className="table">
           <thead>
-            <tr>
-              <th>Name</th>
-              <th>Lname</th>
+            <tr className="tableHead">
+              <th>First Name</th>
+              <th>Last Name</th>
               <th>Age</th>
             </tr>
           </thead>
