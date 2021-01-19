@@ -1,4 +1,10 @@
 .table{
     margin: auto;
+    font-size: 20px;
 }
 
+
+.tableHead{
+    background: #f00;
+    color: #fff;
+}

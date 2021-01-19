@@ -36,7 +36,7 @@ class GetInfo extends Component {
           <tbody>
             {this.state.users.map((user) => {
               return (
-                <tr key={user.id}>
+                <tr key={user.id} className="tableBody">
                   <td>{user.name}</td>
                   <td>{user.lname}</td>
                   <td>{user.age}</td>
