@@ -28,8 +28,8 @@ class GetInfo extends Component {
         <table className="table">
           <thead>
             <tr className="tableHead">
-              <th>First Name</th>
-              <th>Last Name</th>
+              <th>F. Name</th>
+              <th>L. Name</th>
               <th>Age</th>
             </tr>
           </thead>
