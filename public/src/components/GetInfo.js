@@ -1,6 +1,12 @@
 import React, { Component } from "react";
 import "./GetInfo.css";
 
+/* const getInfo = async () => {
+  const res = await fetch("http://localhost:8080/users");
+  const data = await res.json();
+  return data
+}; */
+
 class GetInfo extends Component {
   constructor(props) {
     super(props);
@@ -20,12 +26,14 @@ class GetInfo extends Component {
           users: user,
         });
       });
+    /* getInfo(); */
   }
 
   render() {
     return (
       <div>
-        <table className="table">
+        <h1>User System</h1>
+        <table className="table" border="1">
           <thead>
             <tr className="tableHead">
               <th>F. Name</th>
