@@ -28,23 +28,16 @@ class GetInfo extends Component {
     return (
       <div>
         <h1>User System</h1>
-        <div>
-          {this.state.users.map((user) => {
-            return (
-              <div className="table">
-                <div key={user._id} className="card">
-                  <div className="img">
-                    <img src={user.img} width="200" height="200" alt={user.name} />
-                  </div>
-                  <div className="card-text">
-                    {user.name.toUpperCase()} {user.lname.toUpperCase()}{" "}
-                    {user.age}
-                  </div>
-                </div>
+        {this.state.users.map((user) => {
+          return (
+            <div className="flex-container" key={user._id}>
+              <img src={user.img} alt={user.name} />
+              <div className="card-text">
+                {user.name.toUpperCase()} {user.lname.toUpperCase()} {user.age}
               </div>
-            );
-          })}
-        </div>
+            </div>
+          );
+        })}
       </div>
     );
   }
