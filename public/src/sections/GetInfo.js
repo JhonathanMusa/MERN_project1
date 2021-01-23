@@ -1,12 +1,6 @@
 import React, { Component } from "react";
 import "./GetInfo.css";
 
-/* const getInfo = async () => {
-  const res = await fetch("http://localhost:8080/users");
-  const data = await res.json();
-  return data
-}; */
-
 class GetInfo extends Component {
   constructor(props) {
     super(props);
@@ -17,7 +11,9 @@ class GetInfo extends Component {
   }
 
   componentDidMount() {
-    fetch("http://localhost:8080/users")
+    const url = "http://localhost:8080/users";
+
+    fetch(url)
       .then((res) => {
         return res.json();
       })
@@ -26,7 +22,6 @@ class GetInfo extends Component {
           users: user,
         });
       });
-    /* getInfo(); */
   }
 
   render() {
@@ -44,7 +39,7 @@ class GetInfo extends Component {
           <tbody>
             {this.state.users.map((user) => {
               return (
-                <tr key={user.id} className="tableBody">
+                <tr key={user._id} className="tableBody">
                   <td>{user.name}</td>
                   <td>{user.lname}</td>
                   <td>{user.age}</td>
