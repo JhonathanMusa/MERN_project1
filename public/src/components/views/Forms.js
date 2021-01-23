@@ -7,7 +7,7 @@ class Forms extends Component {
     this.state = {
       firstName: "",
       lastName: "",
-      age: 0
+      age: 0,
     };
   }
   handleSubmit = (e) => {
@@ -20,7 +20,10 @@ class Forms extends Component {
       <div>
         <form onSubmit={this.handleSubmit}>
           <p>
-            <label>First Name: </label>
+            <label>
+              <strong>First Name:</strong>
+            </label>
+            <br />
             <input
               onChange={(e) =>
                 this.setState({
@@ -31,7 +34,10 @@ class Forms extends Component {
             />
           </p>
           <p>
-            <label>Last Name: </label>
+            <label>
+              <strong>Last Name:</strong>
+            </label>
+            <br />
             <input
               onChange={(e) =>
                 this.setState({
@@ -42,7 +48,10 @@ class Forms extends Component {
             />
           </p>
           <p>
-            <label>Age: </label>
+            <label>
+              <strong>Age:</strong>
+            </label>
+            <br />
             <input
               onChange={(e) => {
                 this.setState({
