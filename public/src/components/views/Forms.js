@@ -59,7 +59,6 @@ class Forms extends Component {
                 });
               }}
               type="number"
-              value={this.state.age}
             />
           </p>
           <button>Add</button>
