@@ -27,13 +27,11 @@ class GetInfo extends Component {
   render() {
     return (
       <div>
-        <h1>User System</h1>
         {this.state.users.map((user) => {
           return (
             <div className="flex-container" key={user._id}>
-              <img src={user.img} alt={user.name} />
               <div className="card-text">
-                {user.name.toUpperCase()} {user.lname.toUpperCase()} {user.age}
+                {user.name} {user.lname} 
               </div>
             </div>
           );

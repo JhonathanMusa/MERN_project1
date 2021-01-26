@@ -1,65 +1,14 @@
 import React, { Component } from "react";
-
 class Forms extends Component {
-  constructor() {
-    super();
-
-    this.state = {
-      firstName: "",
-      lastName: "",
-      age: 0,
-    };
-  }
-  handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(this.state);
-  };
-
   render() {
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
           <p>
-            <label>
-              <strong>First Name:</strong>
-            </label>
-            <br />
-            <input
-              onChange={(e) =>
-                this.setState({
-                  firstName: e.target.value,
-                })
-              }
-              value={this.state.firstName}
-            />
+            <input name="firstName" placeholder="First Name" />
           </p>
           <p>
-            <label>
-              <strong>Last Name:</strong>
-            </label>
-            <br />
-            <input
-              onChange={(e) =>
-                this.setState({
-                  lastName: e.target.value,
-                })
-              }
-              value={this.state.lastName}
-            />
-          </p>
-          <p>
-            <label>
-              <strong>Age:</strong>
-            </label>
-            <br />
-            <input
-              onChange={(e) => {
-                this.setState({
-                  age: e.target.value,
-                });
-              }}
-              type="number"
-            />
+            <input name="lastName" placeholder="Last Name" />
           </p>
           <button>Add</button>
         </form>

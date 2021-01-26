@@ -1,17 +1,15 @@
-import "./App.css";
-import React, { Component } from "react";
 import GetInfo from "./sections/GetInfo";
 import Forms from "./components/views/Forms";
+import Navbar from "./components/parts/Navbar";
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <GetInfo />
-        {/* <Forms /> */}
-      </div>
-    );
-  }
-}
+const App = () => {
+  return (
+    <div className="App">
+      <Navbar />
+      <GetInfo />
+      <Forms />
+    </div>
+  );
+};
 
 export default App;
