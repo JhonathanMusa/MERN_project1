@@ -10,13 +10,9 @@ const usersSchema = new Schema({
     type: String,
     required: true,
   },
-  age: {
-    type: Number,
-    required: true,
-  },
   img: {
     type: String,
-    required: true,
+    required: false,
   },
 });
 
