@@ -1,5 +1,5 @@
 import GetInfo from "./sections/GetInfo";
-import Forms from "./components/views/Forms";
+import { Forms } from "./components/views/Forms";
 import Navbar from "./components/parts/Navbar";
 
 const App = () => {
