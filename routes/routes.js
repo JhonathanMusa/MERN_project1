@@ -45,7 +45,7 @@ router.post("/new-user", async (req, res) => {
   }
 });
 
-router.put("/user/:id", async (req, res) => {
+router.put("/edit/:id", async (req, res) => {
   const body = req.body;
   const _id = req.params.id;
   try {
