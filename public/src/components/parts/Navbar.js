@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-import UserList from "../../sections/UserList";
+import UserList from "../views/UserList";
 import { Forms } from "../views/Forms";
 import { Edit } from "../views/Edit";
 import { Delete } from "../views/Delete";
