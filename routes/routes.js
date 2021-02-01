@@ -45,7 +45,7 @@ router.post("/new-user", async (req, res) => {
   }
 });
 
-router.put("/edit/:id", async (req, res) => {
+router.put("/user/edit/:id", async (req, res) => {
   const body = req.body;
   const _id = req.params.id;
   try {
@@ -58,7 +58,7 @@ router.put("/edit/:id", async (req, res) => {
   }
 });
 
-router.delete("/user/:id", async (req, res) => {
+router.delete("/delete/:id", async (req, res) => {
   const _id = req.params.id;
   try {
     const userDB = await User.findByIdAndDelete({ _id });
