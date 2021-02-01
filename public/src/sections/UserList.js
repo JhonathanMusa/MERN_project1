@@ -7,7 +7,8 @@ const User = (props) => (
     <td>{props.user.name}</td>
     <td>{props.user.lname}</td>
     <td>
-      <Link to={"/edit/" + props.user._id}>Edit</Link>
+      <Link to={"/edit/" + props.user._id}>Edit</Link>||
+      <Link to={"/delete/" + props.user._id}>Delete</Link>
     </td>
   </tr>
 );

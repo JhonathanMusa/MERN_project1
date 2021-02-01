@@ -1,9 +1,10 @@
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-import GetInfo from "../../sections/GetInfo";
+import UserList from "../../sections/UserList";
 import { Forms } from "../views/Forms";
 import { Edit } from "../views/Edit";
+import { Delete } from "../views/Delete";
 
 export const Navbar = () => (
   <Router>
@@ -17,9 +18,10 @@ export const Navbar = () => (
         </Link>
       </nav>
       <br />
-      <Route path="/" exact component={GetInfo} />
+      <Route path="/" exact component={UserList} />
       <Route path="/add" component={Forms} />
       <Route path="/edit/:id" component={Edit} />
+      <Route path="/delete/:id" component={Delete} />
     </div>
   </Router>
 );
