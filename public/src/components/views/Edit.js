@@ -36,45 +36,44 @@ export class Edit extends Component {
   };
 
   handleSubmit = (e) => {
-    const { name, lname } = this.state;
     e.preventDefault();
 
-    const url = "http://localhost:8080/edit/";
-    const obj = {
+    const { name, lname } = this.state;
+    const user = {
       name: name,
       lname: lname,
     };
-
+    const url = "http://localhost:8080/user/edit/";
     axios
-      .put(url + this.props.match.params.id, obj)
+      .put(url + this.props.match.params.id, user)
       .then((res) => console.log(res.data));
 
     this.props.history.push("/");
-    console.log(this.state);
   };
 
   render() {
+    const { name, lname } = this.state;
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
-          <p>
+          <div className="form-group">
             <input
               className="form-control"
               name="firstName"
               onChange={this.handleFirstName}
-              placeholder="First Name"
-              value={this.state.name}
+              type="text"
+              value={name}
             />
-          </p>
-          <p>
+          </div>
+          <div className="form-group">
             <input
               className="form-control"
               name="lastName"
               onChange={this.handleLastName}
-              placeholder="Last Name"
-              value={this.state.lname}
+              type="text"
+              value={lname}
             />
-          </p>
+          </div>
           <button className="btn btn-secondary btn-block">Add</button>
         </form>
       </div>

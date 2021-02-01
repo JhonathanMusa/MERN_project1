@@ -1,7 +1,16 @@
 import React, { Component } from "react";
-import axios from "axios";
 import { Link } from "react-router-dom";
-import "./GetInfo.css";
+import axios from "axios";
+
+const User = (props) => (
+  <tr>
+    <td>{props.user.name}</td>
+    <td>{props.user.lname}</td>
+    <td>
+      <Link to={"/edit/" + props.user._id}>Edit</Link>
+    </td>
+  </tr>
+);
 
 class GetInfo extends Component {
   state = {
@@ -10,30 +19,23 @@ class GetInfo extends Component {
 
   componentDidMount() {
     const url = "http://localhost:8080/users/";
-
     axios
       .get(url)
-      .then((res) => res.data)
-      .then((user) => {
+      .then((res) => {
         this.setState({
-          users: user,
+          users: res.data,
         });
+      })
+      .catch((error) => {
+        console.log(error);
       });
   }
 
-  userList = () => {
-    return this.state.users.map((user) => {
-      return (
-        <tr key={user._id}>
-          <td>{user.name}</td>
-          <td>{user.lname}</td>
-          <td>
-            <Link to={"/edit/"}>Edit</Link>|<Link to="/delete/">Delete</Link>
-          </td>
-        </tr>
-      );
+  userList() {
+    return this.state.users.map((user, i) => {
+      return <User user={user} key={i} />;
     });
-  };
+  }
 
   render() {
     return (
