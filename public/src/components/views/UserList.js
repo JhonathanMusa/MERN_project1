@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
@@ -13,47 +13,38 @@ const User = (props) => (
   </tr>
 );
 
-class GetInfo extends Component {
-  state = {
-    users: [],
-  };
+export const UserList = () => {
+  const [users, setUsers] = useState([]);
 
-  componentDidMount() {
+  useEffect(() => {
     const url = "http://localhost:8080/users/";
-    axios
-      .get(url)
+    axios({ url: url })
       .then((res) => {
-        this.setState({
-          users: res.data,
-        });
+        setUsers(res.data);
       })
       .catch((error) => {
         console.log(error);
       });
-  }
+  }, [setUsers]);
 
-  userList() {
-    return this.state.users.map((user, i) => {
+  const userList = () => {
+    return users.map((user, i) => {
       return <User user={user} key={i} />;
     });
-  }
+  };
 
-  render() {
-    return (
-      <div>
-        <table className="table text-center">
-          <thead>
-            <tr>
-              <th>First Name</th>
-              <th>Second Name</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody>{this.userList()}</tbody>
-        </table>
-      </div>
-    );
-  }
-}
-
-export default GetInfo;
+  return (
+    <div>
+      <table className="table text-center">
+        <thead>
+          <tr>
+            <th>First Name</th>
+            <th>Second Name</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>{userList()}</tbody>
+      </table>
+    </div>
+  );
+};
