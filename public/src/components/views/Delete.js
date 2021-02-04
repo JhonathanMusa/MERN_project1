@@ -75,7 +75,7 @@ export class Delete extends Component {
               value={lname}
             />
           </div>
-          <button className="btn btn-secondary btn-block">Delete</button>
+          <button className="btn btn-danger btn-block">Delete</button>
         </form>
       </div>
     );

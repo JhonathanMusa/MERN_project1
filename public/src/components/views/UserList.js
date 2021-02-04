@@ -7,8 +7,12 @@ const User = (props) => (
     <td>{props.user.name}</td>
     <td>{props.user.lname}</td>
     <td>
-      <Link to={"/edit/" + props.user._id}>Edit</Link>||
-      <Link to={"/delete/" + props.user._id}>Delete</Link>
+      <Link to={"/edit/" + props.user._id}>
+        <button className="btn btn-warning">Edit</button>
+      </Link>
+      <Link to={"/delete/" + props.user._id}>
+        <button className="btn btn-danger">Delete</button>
+      </Link>
     </td>
   </tr>
 );

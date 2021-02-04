@@ -54,7 +54,7 @@ export class Edit extends Component {
   render() {
     const { name, lname } = this.state;
     return (
-      <div>
+      <div className="mt-3">
         <form onSubmit={this.handleSubmit}>
           <div className="form-group">
             <input
@@ -74,7 +74,7 @@ export class Edit extends Component {
               value={lname}
             />
           </div>
-          <button className="btn btn-secondary btn-block">Add</button>
+          <button className="btn btn-warning btn-block">Update</button>
         </form>
       </div>
     );

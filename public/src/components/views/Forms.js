@@ -62,7 +62,8 @@ export class Forms extends Component {
               onChange={this.handleLastName}
             />
           </p>
-          <button className="btn btn-secondary btn-block">Add</button>
+
+          <button className="btn btn-success btn-block">Add</button>
         </form>
       </div>
     );

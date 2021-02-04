@@ -18,6 +18,7 @@ export const Navbar = () => (
         </Link>
       </nav>
       <br />
+      <Forms />
       <Route path="/" exact component={UserList} />
       <Route path="/add" component={Forms} />
       <Route path="/edit/:id" component={Edit} />
