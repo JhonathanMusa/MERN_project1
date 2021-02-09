@@ -38,8 +38,6 @@ export class Forms extends Component {
       name: name,
       lname: lname,
     });
-
-    this.props.history.push("/");
   };
 
   render() {

@@ -22,13 +22,15 @@ export const UserList = () => {
 
   useEffect(() => {
     const url = "http://localhost:8080/users/";
-    axios({ url: url })
-      .then((res) => {
-        setUsers(res.data);
-      })
-      .catch((error) => {
+    const getUsers = async () => {
+      try {
+        const response = await axios({ url: url });
+        setUsers(response.data);
+      } catch (error) {
         console.log(error);
-      });
+      }
+    };
+    getUsers();
   }, [setUsers]);
 
   const userList = () => {
