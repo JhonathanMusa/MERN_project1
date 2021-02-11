@@ -8,10 +8,14 @@ const User = (props) => (
     <td>{props.user.lname}</td>
     <td>
       <Link to={"/edit/" + props.user._id}>
-        <button className="btn btn-warning">Edit</button>
+        <button className="btn btn-warning">
+          Edit <i className="fas fa-edit"></i>
+        </button>
       </Link>
       <Link to={"/delete/" + props.user._id}>
-        <button className="btn btn-danger">Delete</button>
+        <button className="btn btn-danger">
+          Delete <i className="fas fa-user-minus"></i>
+        </button>
       </Link>
     </td>
   </tr>

@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import axios from "axios";
-import "bootstrap/dist/css/bootstrap.min.css";
 
 export class Edit extends Component {
   state = {
@@ -74,7 +73,9 @@ export class Edit extends Component {
               value={lname}
             />
           </div>
-          <button className="btn btn-warning btn-block">Update</button>
+          <button className="btn btn-warning btn-block">
+            Update <i className="fas fa-edit"></i>
+          </button>
         </form>
       </div>
     );

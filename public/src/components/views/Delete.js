@@ -1,7 +1,5 @@
 import React, { Component } from "react";
-
 import axios from "axios";
-import "bootstrap/dist/css/bootstrap.min.css";
 
 export class Delete extends Component {
   state = {
@@ -75,7 +73,7 @@ export class Delete extends Component {
               value={lname}
             />
           </div>
-          <button className="btn btn-danger btn-block">Delete</button>
+          <button className="btn btn-danger btn-block">Delete <i className="fas fa-user-minus"></i></button>
         </form>
       </div>
     );

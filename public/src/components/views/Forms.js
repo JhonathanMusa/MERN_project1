@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import axios from "axios";
-import "bootstrap/dist/css/bootstrap.min.css";
 
 export class Forms extends Component {
   state = {
@@ -38,6 +37,8 @@ export class Forms extends Component {
       name: name,
       lname: lname,
     });
+
+    this.props.history.push("/");
   };
 
   render() {
@@ -61,7 +62,7 @@ export class Forms extends Component {
             />
           </p>
 
-          <button className="btn btn-success btn-block">Add</button>
+          <button className="btn btn-success btn-block">Add <i className="fas fa-plus"></i></button>
         </form>
       </div>
     );
