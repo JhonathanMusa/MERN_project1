@@ -45,16 +45,20 @@ export const UserList = () => {
 
   return (
     <div>
-      <table className="table text-center">
-        <thead>
-          <tr>
-            <th>First Name</th>
-            <th>Second Name</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody>{userList()}</tbody>
-      </table>
+      {users.length > 0 ? (
+        <table className="table text-center">
+          <thead>
+            <tr>
+              <th>First Name</th>
+              <th>Second Name</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>{userList()}</tbody>
+        </table>
+      ) : (
+        <h2 className="text-center">Nothing to see</h2>
+      )}
     </div>
   );
 };
