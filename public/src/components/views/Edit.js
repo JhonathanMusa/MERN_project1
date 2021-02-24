@@ -1,83 +1,68 @@
-import React, { Component } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 
-export class Edit extends Component {
-  state = {
+export const Edit = (props) => {
+  const [editUser, setEditUser] = useState({
     name: "",
     lname: "",
-  };
+  });
 
-  componentDidMount() {
-    const url = "http://localhost:8080/user/";
+  const { id } = props.match.params;
+
+  useEffect(() => {
     axios
-      .get(url + this.props.match.params.id)
+      .get(`http://localhost:8080/user/${id}`)
       .then((response) => {
-        this.setState({
-          name: response.data.name,
-          lname: response.data.lname,
-        });
+        setEditUser(response.data);
+        console.log(response.data);
       })
       .catch((error) => {
         console.log(error);
       });
-  }
+  }, [id, setEditUser]);
 
-  handleFirstName = (e) => {
-    this.setState({
-      name: e.target.value,
+  const handleInput = (e) => {
+    setEditUser({
+      ...editUser,
+      [e.target.name]: e.target.value,
     });
   };
 
-  handleLastName = (e) => {
-    this.setState({
-      lname: e.target.value,
-    });
-  };
-
-  handleSubmit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
-    const { name, lname } = this.state;
-    const user = {
-      name: name,
-      lname: lname,
-    };
-    const url = "http://localhost:8080/user/edit/";
     axios
-      .put(url + this.props.match.params.id, user)
+      .put(`http://localhost:8080/user/edit/${id}`, editUser)
       .then((res) => console.log(res.data));
 
-    this.props.history.push("/");
+    props.history.push("/");
   };
 
-  render() {
-    const { name, lname } = this.state;
-    return (
-      <div className="mt-3">
-        <form onSubmit={this.handleSubmit}>
-          <div className="form-group">
-            <input
-              className="form-control"
-              name="firstName"
-              onChange={this.handleFirstName}
-              type="text"
-              value={name}
-            />
-          </div>
-          <div className="form-group">
-            <input
-              className="form-control"
-              name="lastName"
-              onChange={this.handleLastName}
-              type="text"
-              value={lname}
-            />
-          </div>
-          <button className="btn btn-warning btn-block">
-            Update <i className="fas fa-edit"></i>
-          </button>
-        </form>
-      </div>
-    );
-  }
-}
+  return (
+    <div className="mt-3">
+      <form onSubmit={handleSubmit}>
+        <div className="form-group">
+          <input
+            className="form-control"
+            name="name"
+            onChange={handleInput}
+            type="text"
+            value={editUser.name}
+          />
+        </div>
+        <div className="form-group">
+          <input
+            className="form-control"
+            name="lname"
+            onChange={handleInput}
+            type="text"
+            value={editUser.lname}
+          />
+        </div>
+        <button className="btn btn-warning btn-block">
+          Update <i className="fas fa-edit"></i>
+        </button>
+      </form>
+    </div>
+  );
+};

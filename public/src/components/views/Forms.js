@@ -1,70 +1,56 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 
-export class Forms extends Component {
-  state = {
+export const Forms = (props) => {
+  const [newUser, setNewUser] = useState({
     name: "",
     lname: "",
-  };
+  });
 
-  handleFirstName = (e) => {
-    this.setState({
-      name: e.target.value,
+  const handleInput = (e) => {
+    setNewUser({
+      ...newUser,
+      [e.target.name]: e.target.value,
     });
   };
 
-  handleLastName = (e) => {
-    this.setState({
-      lname: e.target.value,
-    });
-  };
-
-  handleSubmit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
-    const { name, lname } = this.state;
-
-    const user = {
-      name: name,
-      lname: lname,
-    };
-
     axios
-      .post("http://localhost:8080/new-user", user)
-      .then((res) => console.log(res.data));
+      .post("http://localhost:8080/new-user", newUser)
+      .then((res) => console.log(res.data))
+      .catch((err) => {
+        console.log(err);
+      });
 
-    this.setState({
-      name: name,
-      lname: lname,
-    });
-
-    this.props.history.push("/");
+    props.history.push("/");
   };
 
-  render() {
-    return (
-      <div>
-        <form onSubmit={this.handleSubmit}>
-          <p>
-            <input
-              className="form-control"
-              name="firstName"
-              placeholder="First Name"
-              onChange={this.handleFirstName}
-            />
-          </p>
-          <p>
-            <input
-              className="form-control"
-              name="lastName"
-              placeholder="Last Name"
-              onChange={this.handleLastName}
-            />
-          </p>
+  return (
+    <div>
+      <form onSubmit={handleSubmit}>
+        <p>
+          <input
+            className="form-control"
+            name="name"
+            placeholder="First Name"
+            onChange={handleInput}
+          />
+        </p>
+        <p>
+          <input
+            className="form-control"
+            name="lname"
+            placeholder="Last Name"
+            onChange={handleInput}
+          />
+        </p>
 
-          <button className="btn btn-success btn-block">Add <i className="fas fa-plus"></i></button>
-        </form>
-      </div>
-    );
-  }
-}
+        <button className="btn btn-success btn-block">
+          Add <i className="fas fa-plus"></i>
+        </button>
+      </form>
+    </div>
+  );
+};

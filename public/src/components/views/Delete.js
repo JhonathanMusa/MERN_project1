@@ -1,81 +1,69 @@
-import React, { Component } from "react";
-import axios from "axios";
+import React, { useEffect, useState } from "react";
+import Axios from "axios";
 
-export class Delete extends Component {
-  state = {
+export const Delete = (props) => {
+  const [deleteUser, setDeleteUser] = useState({
     name: "",
     lname: "",
-  };
+  });
 
-  componentDidMount() {
-    const url = "http://localhost:8080/user/";
-    axios
-      .get(url + this.props.match.params.id)
+  const { id } = props.match.params
+
+  useEffect(() => {
+    Axios.get(`http://localhost:8080/user/${id}`)
       .then((response) => {
-        this.setState({
-          name: response.data.name,
-          lname: response.data.lname,
-        });
+        setDeleteUser(response.data);
       })
-      .catch((error) => {
-        console.log(error);
+      .catch((err) => {
+        console.log(err);
       });
-  }
+  }, [id, setDeleteUser]);
 
-  handleFirstName = (e) => {
-    this.setState({
-      name: e.target.value,
+  const handleInput = (e) => {
+    setDeleteUser({
+      ...deleteUser,
+      [e.target.name]: e.target.value,
     });
   };
 
-  handleLastName = (e) => {
-    this.setState({
-      lname: e.target.value,
-    });
-  };
-
-  handleSubmit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
-    const { name, lname } = this.state;
-    const user = {
-      name: name,
-      lname: lname,
-    };
-    const url = "http://localhost:8080/user/delete/";
-    axios
-      .delete(url + this.props.match.params.id, user)
-      .then((res) => console.log(res.data));
+    Axios.delete(`http://localhost:8080/user/delete/${id}`, deleteUser)
+      .then((res) => console.log(res.data))
+      .catch((err) => {
+        console.log(err);
+      });
 
-    this.props.history.push("/");
+    props.history.push("/");
   };
 
-  render() {
-    const { name, lname } = this.state;
-    return (
-      <div>
-        <form onSubmit={this.handleSubmit}>
-          <div className="form-group">
-            <input
-              className="form-control"
-              name="firstName"
-              onChange={this.handleFirstName}
-              type="text"
-              value={name}
-            />
-          </div>
-          <div className="form-group">
-            <input
-              className="form-control"
-              name="lastName"
-              onChange={this.handleLastName}
-              type="text"
-              value={lname}
-            />
-          </div>
-          <button className="btn btn-danger btn-block">Delete <i className="fas fa-user-minus"></i></button>
-        </form>
-      </div>
-    );
-  }
-}
+  return (
+    <div className="mt-3">
+      <form onSubmit={handleSubmit}>
+        <p>
+          <input
+            className="form-control"
+            name="name"
+            placeholder="First Name"
+            onChange={handleInput}
+            value={deleteUser.name}
+          />
+        </p>
+        <p>
+          <input
+            className="form-control"
+            name="lname"
+            placeholder="Last Name"
+            onChange={handleInput}
+            value={deleteUser.lname}
+          />
+        </p>
+
+        <button className="btn btn-danger btn-block">
+          Add <i className="fas fa-plus"></i>
+        </button>
+      </form>
+    </div>
+  );
+};
