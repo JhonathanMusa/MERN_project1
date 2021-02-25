@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import axios from "axios";
+import Axios from "axios";
 
 const User = (props) => (
   <tr>
@@ -28,7 +28,7 @@ export const UserList = () => {
     const url = "http://localhost:8080/users/";
     const getUsers = async () => {
       try {
-        const response = await axios({ url: url });
+        const response = await Axios({ url: url });
         setUsers(response.data);
       } catch (error) {
         console.log(error);

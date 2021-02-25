@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import Axios from "axios";
 
 export const Edit = (props) => {
   const [editUser, setEditUser] = useState({
@@ -10,15 +10,15 @@ export const Edit = (props) => {
   const { id } = props.match.params;
 
   useEffect(() => {
-    axios
-      .get(`http://localhost:8080/user/${id}`)
-      .then((response) => {
+    const getUser = async () => {
+      try {
+        const response = await Axios.get(`http://localhost:8080/user/${id}`);
         setEditUser(response.data);
-        console.log(response.data);
-      })
-      .catch((error) => {
+      } catch (error) {
         console.log(error);
-      });
+      }
+    };
+    getUser();
   }, [id, setEditUser]);
 
   const handleInput = (e) => {
@@ -31,9 +31,9 @@ export const Edit = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    axios
-      .put(`http://localhost:8080/user/edit/${id}`, editUser)
-      .then((res) => console.log(res.data));
+    Axios.put(`http://localhost:8080/user/edit/${id}`, editUser).then((res) =>
+      console.log(res.data)
+    );
 
     props.history.push("/");
   };

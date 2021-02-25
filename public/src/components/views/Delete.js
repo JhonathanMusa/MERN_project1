@@ -7,16 +7,18 @@ export const Delete = (props) => {
     lname: "",
   });
 
-  const { id } = props.match.params
+  const { id } = props.match.params;
 
   useEffect(() => {
-    Axios.get(`http://localhost:8080/user/${id}`)
-      .then((response) => {
+    const getUser = async () => {
+      try {
+        const response = await Axios.get(`http://localhost:8080/user/${id}`);
         setDeleteUser(response.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getUser();
   }, [id, setDeleteUser]);
 
   const handleInput = (e) => {
