@@ -31,11 +31,19 @@ export const Delete = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    Axios.delete(`http://localhost:8080/user/delete/${id}`, deleteUser)
-      .then((res) => console.log(res.data))
-      .catch((err) => {
-        console.log(err);
-      });
+    const deleteData = async () => {
+      try {
+        const { data } = await Axios.delete(
+          `http://localhost:8080/user/delete/${id}`,
+          deleteUser
+        );
+        console.log(data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    deleteData();
 
     props.history.push("/");
   };

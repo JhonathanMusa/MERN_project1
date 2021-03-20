@@ -17,12 +17,19 @@ export const Forms = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    axios
-      .post("http://localhost:8080/new-user", newUser)
-      .then((res) => console.log(res.data))
-      .catch((err) => {
-        console.log(err);
-      });
+    const addData = async () => {
+      try {
+        const { data } = await axios.post(
+          "http://localhost:8080/new-user",
+          newUser
+        );
+        console.log(data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    addData();
 
     props.history.push("/");
   };

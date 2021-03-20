@@ -31,10 +31,18 @@ export const Edit = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    Axios.put(`http://localhost:8080/user/edit/${id}`, editUser).then((res) =>
-      console.log(res.data)
-    );
-
+    const addData = async () => {
+      try {
+        const { data } = await Axios.put(
+          `http://localhost:8080/user/edit/${id}`,
+          editUser
+        );
+        console.log(data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    addData();
     props.history.push("/");
   };
 
