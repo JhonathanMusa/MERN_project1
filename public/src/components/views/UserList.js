@@ -28,8 +28,8 @@ export const UserList = () => {
     const url = "http://localhost:8080/users/";
     const getUsers = async () => {
       try {
-        const response = await Axios({ url: url });
-        setUsers(response.data);
+        const { data } = await Axios({ url: url });
+        setUsers(data);
       } catch (error) {
         console.log(error);
       }

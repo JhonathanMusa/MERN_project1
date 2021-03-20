@@ -12,8 +12,8 @@ export const Edit = (props) => {
   useEffect(() => {
     const getUser = async () => {
       try {
-        const response = await Axios.get(`http://localhost:8080/user/${id}`);
-        setEditUser(response.data);
+        const {data} = await Axios.get(`http://localhost:8080/user/${id}`);
+        setEditUser(data);
       } catch (error) {
         console.log(error);
       }
