@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import Axios from "axios";
 
+const getUrl = "http://localhost:8080/user/";
+
 export const Delete = (props) => {
   const [deleteUser, setDeleteUser] = useState({
     name: "",
@@ -12,7 +14,7 @@ export const Delete = (props) => {
   useEffect(() => {
     const getUser = async () => {
       try {
-        const { data } = await Axios.get(`http://localhost:8080/user/${id}`);
+        const { data } = await Axios.get(getUrl + id);
         setDeleteUser(data);
       } catch (error) {
         console.log(error);

@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
 
+const URL = "http://localhost:8080/new-user";
+
 export const Forms = (props) => {
   const [newUser, setNewUser] = useState({
     name: "",
@@ -19,10 +21,7 @@ export const Forms = (props) => {
 
     const addData = async () => {
       try {
-        const { data } = await axios.post(
-          "http://localhost:8080/new-user",
-          newUser
-        );
+        const { data } = await axios.post(URL, newUser);
         console.log(data);
       } catch (error) {
         console.log(error);

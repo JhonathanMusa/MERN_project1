@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from "react";
 import Axios from "axios";
+import { useParams } from "react-router";
+
+const getUrl = "http://localhost:8080/user/";
 
 export const Edit = (props) => {
   const [editUser, setEditUser] = useState({
@@ -7,12 +10,12 @@ export const Edit = (props) => {
     lname: "",
   });
 
-  const { id } = props.match.params;
+  const { id } = useParams();
 
   useEffect(() => {
     const getUser = async () => {
       try {
-        const {data} = await Axios.get(`http://localhost:8080/user/${id}`);
+        const { data } = await Axios.get(getUrl + id);
         setEditUser(data);
       } catch (error) {
         console.log(error);
