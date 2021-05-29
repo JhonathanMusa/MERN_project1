@@ -1,2 +1,2 @@
-# basic_users_system
-Simple mern project 
+# users_system
+MERN project 
