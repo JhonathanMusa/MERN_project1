@@ -1,10 +1,10 @@
-import { Navbar } from "./components/parts/Navbar";
 import "./App.css";
+import { UserList } from "./components/UserList";
 
 const App = () => {
   return (
     <div className="App">
-      <Navbar />
+      <UserList />
     </div>
   );
 };
