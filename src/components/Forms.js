@@ -15,19 +15,23 @@ export const Forms = ({ setUsers }) => {
       id: uuid(),
       name,
     };
-    setUsers((actual) => [...actual, addUser]);
+
+    if (name !== "") {
+      setUsers((actual) => [...actual, addUser]);
+    }
   };
 
   return (
     <form onSubmit={handleSubmit}>
       <input
+        autoComplete="off"
         className="form-control"
         name="name"
         placeholder="First Name"
         onChange={handleInput}
       />
 
-      <button className="btn btn-success mt-2 w-100">Add</button>
+      <button className="btn btn-primary mt-2 w-100">Add</button>
     </form>
   );
 };
