@@ -2,7 +2,7 @@ import React from "react";
 
 export const UserTable = ({ users, handleDelete }) => {
   return (
-    <table className="table text-center">
+    <table className="table text-center mt-3">
       <thead>
         <tr>
           <th>Name</th>
@@ -15,7 +15,7 @@ export const UserTable = ({ users, handleDelete }) => {
             <td>{user.name}</td>
             <td>
               <button
-                className="btn btn-danger"
+                className="btn btn-outline-danger"
                 onClick={() => handleDelete(user.id)}
               >
                 Delete

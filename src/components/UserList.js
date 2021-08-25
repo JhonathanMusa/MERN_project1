@@ -23,10 +23,10 @@ export const UserList = () => {
   return (
     <div className="container">
       <button
-        className="btn btn-dark mb-5"
+        className="btn btn-outline-dark mb-5"
         onClick={() => setAddUsers(!addUsers)}
       >
-        {!addUsers ? "+ Add User" : "- Close Form"}
+        {!addUsers ? "+ New User" : "- Close Form"}
       </button>
 
       {addUsers && <Forms setUsers={setUsers} />}
