@@ -6,6 +6,7 @@ export const UserTable = ({ users, handleDelete }) => {
       <thead>
         <tr>
           <th>Name</th>
+          <th>Phone</th>
           <th>Action</th>
         </tr>
       </thead>
@@ -13,6 +14,7 @@ export const UserTable = ({ users, handleDelete }) => {
         {users.map((user) => (
           <tr key={user.id}>
             <td>{user.name}</td>
+            <td>{user.phone}</td>
             <td>
               <button
                 className="btn btn-outline-danger"

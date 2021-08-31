@@ -2,10 +2,20 @@ import React, { useState } from "react";
 import { v4 as uuid } from "uuid";
 
 export const Forms = ({ setUsers }) => {
-  const [name, setName] = useState("");
+  const [userData, setUserData] = useState([
+    {
+      name: "",
+      phone: "",
+    },
+  ]);
+
+  const { name, phone } = userData;
 
   const handleInput = (e) => {
-    setName(e.target.value);
+    setUserData({
+      ...userData,
+      [e.target.name]: e.target.value,
+    });
   };
 
   const handleSubmit = (e) => {
@@ -14,11 +24,13 @@ export const Forms = ({ setUsers }) => {
     const addUser = {
       id: uuid(),
       name,
+      phone,
     };
 
-    if (name !== "") {
+    if (name !== "" && phone !== "") {
       setUsers((actual) => [...actual, addUser]);
     }
+
   };
 
   return (
@@ -27,11 +39,19 @@ export const Forms = ({ setUsers }) => {
         autoComplete="off"
         className="form-control"
         name="name"
-        placeholder="First Name"
+        placeholder="Name"
+        onChange={handleInput}
+      />
+      <br />
+      <input
+        autoComplete="off"
+        className="form-control"
+        name="phone"
+        placeholder="Phone"
         onChange={handleInput}
       />
 
-      <button className="btn btn-primary mt-2 w-100">Add</button>
+      <button className="btn btn-primary mt-3 w-100">Add</button>
     </form>
   );
 };
