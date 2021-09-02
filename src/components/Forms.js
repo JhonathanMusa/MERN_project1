@@ -39,16 +39,16 @@ export const Forms = ({ setUsers }) => {
         autoComplete="off"
         className="form-control"
         name="name"
-        placeholder="Name"
         onChange={handleInput}
+        placeholder="Full Name"
       />
       <br />
       <input
         autoComplete="off"
         className="form-control"
         name="phone"
-        placeholder="Phone"
         onChange={handleInput}
+        placeholder="Phone"
       />
 
       <button className="btn btn-primary mt-3 w-100">Add</button>
